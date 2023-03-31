@@ -1,0 +1,265 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+    color: #fde2ff;
+}
+/* Body */
+body{
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+/* Nav */
+nav{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 15vh;
+    padding: 1rem;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+}
+.header-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.header-boton-active{
+    font-weight: bold;
+    margin:0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    background-color: #ff00bf;
+    color: white;
+}
+.header-boton-active:hover{
+    background-color: white;
+    color: #ff00bf;
+}
+.header-boton{
+    font-weight: bold;
+    margin:0.5rem;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    background-color: white;
+    color: #ff00bf;
+}
+.header-boton:hover{
+    background-color: #ff00bf;
+    color: white;
+}
+/* Header */
+header{
+    background-color: #000000de;
+    min-height: 10vh;
+}
+.texto-carrusel{
+    color: #ff00bf;
+    text-decoration: none;
+    font-size: 4rem;
+}
+/* Main */
+main{
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);                
+    min-height: 65vh;
+}
+.card{
+    max-width: 18rem!important;
+    margin: 1rem!important;
+}
+.margin-card{
+    margin: 0.8rem;
+}
+.card-title{
+    min-height: 4rem!important;
+}
+.card-text{
+    min-height: 5rem;
+}
+.btn-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    color: #ff00bf;
+    width: 6rem;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    box-shadow: 6px 6px 6px transparent,
+                -6px -6px 6px #ff00bf;
+    }
+.btn-card:hover{
+    background-color: #ff00bf;
+    color: white;
+    text-decoration: none;
+    box-shadow: 6px 6px 6px white,
+                -6px -6px 6px transparent;
+}
+.alto-carrusel{
+    height: 10vh;
+}
+.alto60{
+    min-height: 60vh;
+}
+.form-contact{
+    background-color: black;
+    padding: 2rem;
+    border-radius: 2rem;
+    height: fit-content;
+}
+.contenedor-formulario{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.3rem;
+    width: 30vw;
+}
+.boton-enviar{
+    background-color: #ff00bf;
+    width: fit-content;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+    margin-top: 1rem;
+    border: none;
+}
+table, tr, th, td {
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
+    border-collapse: collapse;
+    padding: 0.5rem 0.5rem;
+}
+table {
+    text-align: center;
+    width: 90%;
+    margin: 1rem;
+    border-radius: 1rem;
+}
+tr th {
+    background-color: #ff00bf;  
+}
+tbody {
+    background-color: rgb(0, 0, 0);
+}
+/* Details */
+.main-card{
+    min-height: 75vh;
+}
+.contenedor-card{
+    width: 70vw;
+    border-radius: 2rem;
+    padding: 3rem 0;
+    background-color: black;
+}
+.contenido-card{
+    min-width: 30%;
+}
+.contenido-card h5{
+    text-align: center;
+    color: #ff00bf !important;
+}
+.contenedor-card img{
+    width: 50%;
+    border-radius: 1rem;
+}
+/* Footer */
+footer{
+    min-height: 10vh;
+}
+.icon{
+    color: white;
+    font-size: 2.5rem;
+    margin: 0 1rem;
+}
+
+@media only screen and (max-width: 767px){
+    nav{
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedor-boton{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .section-card{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card{
+        min-width: 90%!important;
+    }
+    header{
+        height: 35vh;
+    }
+    .alto-carrusel{
+        text-align: center;
+        height: 35vh;
+    }
+    .columna{
+        flex-direction: column;
+    }
+    .contenedor-formulario{
+        width: 70vw;
+    }
+    footer{
+        flex-direction: column;
+    }
+    .contenedor-card{
+        margin: 1rem;
+        width: 90%;
+        flex-direction: column;
+    }
+    .contenedor-card img{
+        width: 90%;
+    }
+    .contenido-card{
+        min-width: 70%;
+        display: block;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    nav{
+        display: flex;
+        flex-direction: column;
+    }
+    .contenedor-boton{
+        display: flex;
+        text-align: center;
+    }
+    .alto-carrusel{
+        text-align: center;
+        height: 15vh;
+    }
+    .columna{
+        flex-direction: column;
+    }
+    .card{
+        max-width: 21%!important;
+        height: 28rem;
+        margin: 1rem!important;
+    }
+    .margin-card{
+        margin: 0.8rem;
+    }
+    .card-title{
+        min-height: 4rem!important;
+    }
+    .card-text{
+        min-height: 10rem;
+    }
+    .contenedor-card{
+        margin: 1rem;
+        width: 90%;
+    }
+    .contenedor-card img{
+        padding: 1rem;
+    }
+}
