@@ -2,9 +2,6 @@
 const contenedor = document.getElementById("eventos")
 const eventos = filtrarEventos (data.eventos)
 let card = ``
-for (let evento of eventos) {
-    card += agregarEventoHtml(evento)
-}
 
 // funcion para crear el article
 function agregarEventoHtml(evento) {
@@ -25,9 +22,10 @@ function agregarEventoHtml(evento) {
 
 // funcion para filtrar por fecha
 function filtrarEventos(arrayEventos) {
+    const fechaFiltro = data.fechaActual
     const eventosFiltrados = []
     for (let evento of arrayEventos) {
-        if (evento.date >= '2022-01-01') { 
+        if (evento.date >= fechaFiltro) { 
         eventosFiltrados.push(evento)
         }
     }
