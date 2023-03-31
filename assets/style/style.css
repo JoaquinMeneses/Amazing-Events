@@ -70,18 +70,8 @@ main{
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);                
     min-height: 65vh;
 }
-.card{
-    max-width: 18rem!important;
-    margin: 1rem!important;
-}
-.margin-card{
-    margin: 0.8rem;
-}
-.card-title{
-    min-height: 4rem!important;
-}
-.card-text{
-    min-height: 5rem;
+.alto65{
+    min-height: 65vh;
 }
 .btn-card {
     display: flex;
@@ -89,8 +79,8 @@ main{
     align-items: center;
     background-color: white;
     color: #ff00bf;
-    width: 6rem;
-    padding: 0.2rem;
+    width: auto;
+    padding: 0.5rem;
     border-radius: 0.5rem;
     text-decoration: none;
     box-shadow: 6px 6px 6px transparent,
@@ -105,9 +95,6 @@ main{
 }
 .alto-carrusel{
     height: 10vh;
-}
-.alto60{
-    min-height: 60vh;
 }
 .form-contact{
     background-color: black;
@@ -188,14 +175,6 @@ footer{
         flex-direction: column;
         text-align: center;
     }
-    .section-card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .card{
-        min-width: 90%!important;
-    }
     header{
         height: 35vh;
     }
@@ -206,23 +185,8 @@ footer{
     .columna{
         flex-direction: column;
     }
-    .contenedor-formulario{
-        width: 70vw;
-    }
     footer{
         flex-direction: column;
-    }
-    .contenedor-card{
-        margin: 1rem;
-        width: 90%;
-        flex-direction: column;
-    }
-    .contenedor-card img{
-        width: 90%;
-    }
-    .contenido-card{
-        min-width: 70%;
-        display: block;
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px){
@@ -234,32 +198,7 @@ footer{
         display: flex;
         text-align: center;
     }
-    .alto-carrusel{
-        text-align: center;
-        height: 15vh;
-    }
     .columna{
         flex-direction: column;
-    }
-    .card{
-        max-width: 21%!important;
-        height: 28rem;
-        margin: 1rem!important;
-    }
-    .margin-card{
-        margin: 0.8rem;
-    }
-    .card-title{
-        min-height: 4rem!important;
-    }
-    .card-text{
-        min-height: 10rem;
-    }
-    .contenedor-card{
-        margin: 1rem;
-        width: 90%;
-    }
-    .contenedor-card img{
-        padding: 1rem;
     }
 }
