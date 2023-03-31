@@ -108,6 +108,9 @@ main{
     margin-bottom: 0.3rem;
     width: 30vw;
 }
+textarea {
+    resize: none;
+}
 .boton-enviar{
     background-color: #ff00bf;
     width: fit-content;
@@ -184,6 +187,12 @@ footer{
     }
     .columna{
         flex-direction: column;
+    }
+    .contenedor-formulario {
+        width: 100%;
+    }
+    .form-contact {
+        width: 90%;
     }
     footer{
         flex-direction: column;
