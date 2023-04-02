@@ -5,7 +5,7 @@ const evento = eventos
 let card = ``
 
 function agregarEventoHtml(evento) {
-    let alt = evento.name.replace(` `,`-`)
+    let alt = evento.name.replace(/\s/g,`-`)
     return `<article class="card bg-black col-10 col-md-3 rounded-5">
                 <img class="h-50 p-2 rounded-5" src="${evento.image}" class="card-img-top" alt="${alt}">
                 <div class="d-flex justify-content-between flex-column card-body">
