@@ -3,7 +3,6 @@ const contenedor = document.getElementById("eventos")
 const eventos = filtrarEventos (data.eventos)
 let card = ``
 
-
 // funcion para crear el article
 function agregarEventoHTML(evento) {
     // variable para crear un alt usando la variable name del objeto
@@ -27,7 +26,7 @@ function filtrarEventos(arrayEventos) {
     const eventosFiltrados = []
     for (let evento of arrayEventos) {
         if (evento.date >= fechaFiltro) { 
-        eventosFiltrados.push(evento)
+            eventosFiltrados.push(evento)
         }
     }
     return eventosFiltrados

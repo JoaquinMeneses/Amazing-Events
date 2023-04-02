@@ -26,13 +26,13 @@ function filtrarEventos(arrayEventos) {
     const eventosFiltrados = []
     for (let evento of arrayEventos) {
         if (evento.date <= fechaFiltro) { 
-        eventosFiltrados.push(evento)
+            eventosFiltrados.push(evento)
         }
     }
     return eventosFiltrados
 }
 
-// funcion para mostrar en la pantalla
+// para mostrar en la pantalla
 for (let eventoHTML of eventos) {
     card += agregarEventoHTML(eventoHTML)
 }
