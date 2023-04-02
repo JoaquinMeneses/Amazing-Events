@@ -4,7 +4,7 @@ const eventos = filtrarEventos (data.eventos)
 let card = ``
 
 // funcion para crear el article
-function agregarEventoHtml(evento) {
+function agregarEventoHTML(evento) {
     // variable para crear un alt usando la variable name del objeto
     let alt = evento.name.replace(` `,`-`)
     return `<article class="card bg-black col-10 col-md-3 rounded-5">
@@ -33,7 +33,7 @@ function filtrarEventos(arrayEventos) {
 }
 
 // funcion para mostrar en la pantalla
-for (let evento of eventos) {
-    card += agregarEventoHtml(evento)
+for (let eventoHTML of eventos) {
+    card += agregarEventoHTML(eventoHTML)
 }
 contenedor.innerHTML = card; 
