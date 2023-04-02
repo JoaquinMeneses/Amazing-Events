@@ -19,8 +19,8 @@ function agregarEventoHtml(evento) {
             </article>`
 }
 
-for (let evento of eventos) {
-    card += agregarEventoHtml(evento)
+for (let eventoHTML of eventos) {
+    card += agregarEventoHtml(eventoHTML)
 }
 contenedor.innerHTML = card;
 
