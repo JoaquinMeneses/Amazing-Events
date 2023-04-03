@@ -25,7 +25,7 @@ function filtrarEventos(arrayEventos) {
     const fechaFiltro = data.fechaActual
     const eventosFiltrados = []
     for (let evento of arrayEventos) {
-        if (evento.date <= fechaFiltro) { 
+        if (evento.date < fechaFiltro) { 
             eventosFiltrados.push(evento)
         }
     }
