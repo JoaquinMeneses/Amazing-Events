@@ -158,6 +158,9 @@ tbody {
     width: 50%;
     border-radius: 1rem;
 }
+.height1 {
+    min-height: 60vh;
+}
 /* Footer */
 footer{
     min-height: 10vh;
