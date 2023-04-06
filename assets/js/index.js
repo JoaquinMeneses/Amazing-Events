@@ -22,14 +22,13 @@ function agregarEvento(evento) {
 // mostrar en la pantalla
 contenedorEventos.innerHTML = plantillaEvento;
 
-// variables de categorias
+
+// variables filtro por categoria
 const contenedorCategorias = document.getElementById("categorias");
 const categorias = data.eventos;
-const categoriasNoRepetidas = new Set();
 let plantillaCategoria = "";
-let idCategoria = 1; // variable para id y for de los elementos
-
-// crear etiquetas
+let idCategoria = 1; // variable para id y for
+const categoriasNoRepetidas = new Set();
 categorias.forEach((evento) => {
     if (!categoriasNoRepetidas.has(evento.category)) {
         // si la categoría no está en el Set, agregarla y añadir su plantilla
@@ -38,14 +37,11 @@ categorias.forEach((evento) => {
                             <input class="checkbox-categoria" onChange="filtrarPorCategorias()" type="checkbox" name="${evento.name}" value="${evento.category}" id="categoria-${idCategoria}" checked: "">
                             <label for="categoria-${idCategoria}">${evento.category}</label>
                         </div>`;
-
-        idCategoria++; // incrementar el valor de idCategoria
+        idCategoria++; // aumenta el valor de idCategoria
     }
 });
 
-// mostrar en la pantalla
-contenedorCategorias.innerHTML = plantillaCategoria;
-
+// funcion filtro por categoria
 function filtrarPorCategorias() {
     const checkboxesCategorias = document.getElementsByClassName("checkbox-categoria");
     const categoriasSeleccionadas = [];
@@ -61,4 +57,19 @@ function filtrarPorCategorias() {
         const plantillaFiltrada = eventosFiltrados.map(agregarEvento).join(" ");
         contenedorEventos.innerHTML = plantillaFiltrada;
     }
+}
+// mostrar en la pantalla
+contenedorCategorias.innerHTML = plantillaCategoria;
+
+
+// variable filtro por buscador
+const buscador = document.getElementById("buscador");
+buscador.addEventListener("input", filtrarPorTexto);
+
+// funcion filtrar por buscador
+function filtrarPorTexto() {
+    const textoBuscado = buscador.value.toLowerCase();
+    const eventosFiltrados = eventos.filter(evento => evento.name.toLowerCase().includes(textoBuscado) || evento.description.toLowerCase().includes(textoBuscado));
+    const plantillaFiltrada = eventosFiltrados.map(agregarEvento).join(" ");
+    contenedorEventos.innerHTML = plantillaFiltrada;
 }

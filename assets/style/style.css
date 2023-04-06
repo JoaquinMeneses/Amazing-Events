@@ -56,23 +56,13 @@ nav{
     background-color: #ff00bf;
     color: white;
 }
-/* Header */
-header{
-    background-color: #000000de;
-    min-height: 10vh;
-}
-.texto-carrusel{
-    color: #ff00bf;
-    text-decoration: none;
-    font-size: 4rem;
-}
 /* Main */
 main{
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);                
-    min-height: 65vh;
+    min-height: 75vh;
 }
 .alto65{
-    min-height: 65vh;
+    min-height: 75vh;
 }
 .btn-card {
     display: flex;
