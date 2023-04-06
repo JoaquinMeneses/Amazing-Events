@@ -1,14 +1,3 @@
-// uuid
-function generarUuid() {
-    let ahora = new Date().getTime();
-    let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        let aleatorio = (ahora + Math.random() * 16) % 16 | 0;
-        ahora = Math.floor(ahora / 16);
-        return (c == 'x' ? aleatorio : (aleatorio & 0x3 | 0x8)).toString(16);
-    });
-    return uuid;
-}
-
 // variables de eventos
 const contenedorEventos = document.getElementById("eventos");
 const eventos = data.eventos;
@@ -24,7 +13,7 @@ function agregarEvento(evento) {
                     <p class="card-text">${evento.description}</p>
                     <div class="d-flex justify-content-between align-items-baseline">
                         <p class="card-text fw-bold m-0">$${evento.price}</p>
-                        <a class="btn-card fw-bold" href="./assets/pages/details.html?id=${generarUuid()}">See more...</a>
+                        <a class="btn-card fw-bold" href="./assets/pages/details.html?id=${evento.date}">See more...</a>
                     </div>
                 </div>
             </article>`;

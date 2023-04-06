@@ -129,25 +129,8 @@ tbody {
     background-color: rgb(0, 0, 0);
 }
 /* Details */
-.main-card{
-    min-height: 75vh;
-}
-.contenedor-card{
-    width: 70vw;
-    border-radius: 2rem;
-    padding: 3rem 0;
-    background-color: black;
-}
-.contenido-card{
-    min-width: 30%;
-}
-.contenido-card h5{
-    text-align: center;
-    color: #ff00bf !important;
-}
-.contenedor-card img{
-    width: 50%;
-    border-radius: 1rem;
+.card-title {
+    color: #ff00bf;
 }
 .height1 {
     min-height: 60vh;
