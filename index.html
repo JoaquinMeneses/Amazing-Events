@@ -31,39 +31,11 @@
     </header>
     <main>
         <div class="d-flex justify-content-around align-items-center columna animate__animated animate__fadeInLeft">
-            <form class="d-flex p-2 fw-bold columna" action="#" method="get">
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Food Fair" id="categoria1">
-                    <label for="categoria1">Food Fair</label>
-                </div>
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Museum" id="categoria2">
-                    <label for="categoria2">Museum</label>
-                </div>
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Halloween Night" id="categoria3">
-                    <label for="categoria3">Halloween Night</label>
-                </div>
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Music Concert" id="categoria4">
-                    <label for="categoria4">Music Concert</label>
-                </div>
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Race" id="categoria5">
-                    <label for="categoria5">Race</label>
-                </div>
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Book Exchange" id="categoria6">
-                    <label for="categoria6">Book Exchange</label>    
-                </div>
-                <div class="m-2">
-                    <input type="checkbox" name="categoria" value="Let's go to the cinema" id="categoria7">
-                    <label for="categoria7">Let's go to the cinema</label>    
-                </div>
+            <form class="d-flex p-2 fw-bold columna" action="#" method="get" id="categorias">
+                
             </form>
             <form class="d-flex" role="search" action="#" method="get">
-                <input class="form-control me-2" type="search" >
-                <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass fa-rotate-90" style="color: #ffffff;"></i></button>
+                <input class="form-control me-2" type="search" autocomplete="off" id="buscador">
             </form>
         </div>
         <div id="eventos" class="container-fluid d-flex justify-content-center flex-wrap p-3 gap-3 animate__animated animate__fadeInUpBig">
