@@ -13,7 +13,7 @@ function agregarEvento(evento) {
                     <p class="card-text">${evento.description}</p>
                     <div class="d-flex justify-content-between align-items-baseline">
                         <p class="card-text fw-bold m-0">$${evento.price}</p>
-                        <a class="btn-card fw-bold" href="./assets/pages/details.html?id=${evento.date}">See more...</a>
+                        <a class="btn-card fw-bold" href="./assets/pages/details.html?id=${evento.name}">See more...</a>
                     </div>
                 </div>
             </article>`;
@@ -47,20 +47,23 @@ function filtrarPorCategorias() {
     const categoriasSeleccionadas = [];
     for (let checkbox of checkboxesCategorias) {
         if (checkbox.checked) {
-            categoriasSeleccionadas.push(checkbox.value);
+        categoriasSeleccionadas.push(checkbox.value);
         }
     }
-    if (categoriasSeleccionadas.length === 0) {
+    const textoBuscado = buscador.value.toLowerCase(); // se agrega el valor del buscador
+    if (categoriasSeleccionadas.length === 0 && textoBuscado === "") { // si no hay categorías seleccionadas y el buscador está vacío, mostrar todos los eventos
         contenedorEventos.innerHTML = plantillaEvento;
     } else {
-        const eventosFiltrados = eventos.filter(evento => categoriasSeleccionadas.includes(evento.category));
-        const plantillaFiltrada = eventosFiltrados.map(agregarEvento).join(" ");
+        const eventosFiltradosPorCategoria = categoriasSeleccionadas.length === 0 ? eventos : eventos.filter(evento => categoriasSeleccionadas.includes(evento.category));
+      // si no hay categorías seleccionadas muestra todos los eventos de lo contrario filtrar los eventos por categoría seleccionada.
+        const eventosFiltradosPorTexto = eventosFiltradosPorCategoria.filter(evento => evento.name.toLowerCase().includes(textoBuscado) || evento.description.toLowerCase().includes(textoBuscado));
+      // filtrar los eventos filtrados por categoría por el texto buscado
+        const plantillaFiltrada = eventosFiltradosPorTexto.map(agregarEvento).join(" ");
         contenedorEventos.innerHTML = plantillaFiltrada;
     }
 }
 // mostrar en la pantalla
 contenedorCategorias.innerHTML = plantillaCategoria;
-
 
 // variable filtro por buscador
 const buscador = document.getElementById("buscador");
@@ -69,7 +72,17 @@ buscador.addEventListener("input", filtrarPorTexto);
 // funcion filtrar por buscador
 function filtrarPorTexto() {
     const textoBuscado = buscador.value.toLowerCase();
-    const eventosFiltrados = eventos.filter(evento => evento.name.toLowerCase().includes(textoBuscado) || evento.description.toLowerCase().includes(textoBuscado));
+    const checkboxesCategorias = document.getElementsByClassName("checkbox-categoria");
+    const categoriasSeleccionadas = [];
+    for (let checkbox of checkboxesCategorias) {
+        if (checkbox.checked) {
+            categoriasSeleccionadas.push(checkbox.value);
+        }
+    }
+    const eventosFiltrados = eventos.filter(evento => 
+        (evento.name.toLowerCase().includes(textoBuscado) || evento.description.toLowerCase().includes(textoBuscado)) &&
+        (categoriasSeleccionadas.length === 0 || categoriasSeleccionadas.includes(evento.category))
+    );
     const plantillaFiltrada = eventosFiltrados.map(agregarEvento).join(" ");
     contenedorEventos.innerHTML = plantillaFiltrada;
 }

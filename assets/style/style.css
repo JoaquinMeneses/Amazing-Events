@@ -135,6 +135,10 @@ tbody {
 .height1 {
     min-height: 60vh;
 }
+.height2 {
+    max-height: 40vh;
+    min-height: 40vh
+}
 /* Footer */
 footer{
     min-height: 10vh;
@@ -155,13 +159,6 @@ footer{
         flex-direction: column;
         text-align: center;
     }
-    header{
-        height: 35vh;
-    }
-    .alto-carrusel{
-        text-align: center;
-        height: 35vh;
-    }
     .columna{
         flex-direction: column;
     }
@@ -173,6 +170,10 @@ footer{
     }
     footer{
         flex-direction: column;
+    }
+    .height2 {
+        max-height: 30vh;
+        min-height: 30vh
     }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px){
@@ -186,5 +187,9 @@ footer{
     }
     .columna{
         flex-direction: column;
+    }
+    .height2 {
+        max-height: 40vh;
+        min-height: 40vh
     }
 }

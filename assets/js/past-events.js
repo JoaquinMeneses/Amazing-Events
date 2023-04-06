@@ -15,7 +15,7 @@ function agregarEvento(evento) {
                     <p class="card-text">${evento.description}</p>
                     <div class="d-flex justify-content-between align-items-baseline">
                         <p class="card-text fw-bold m-0">$${evento.price}</p>
-                        <a class="btn-card fw-bold" href="../pages/details.html?id=${evento.date}">See more...</a>
+                        <a class="btn-card fw-bold" href="../pages/details.html?id=${evento.name}">See more...</a>
                     </div>
                 </div>
             </article>`;

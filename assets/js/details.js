@@ -4,14 +4,14 @@ let params = new URLSearchParams(urlParams)
 let id = params.get("id")
 
 // Encontrar el evento correspondiente en el array "data.eventos"
-const eventoSeleccionado = data.eventos.find(evento => evento.date === id)
+const eventoSeleccionado = data.eventos.find(evento => evento.name === id)
 
 // Crear la plantilla HTML correspondiente con la información del evento
 const plantillaEventoSeleccionado = `<div class="row g-0 m-3 align-items-center ">
-                                        <div class="col-6 p-5">
-                                            <img src="${eventoSeleccionado.image}" class="col-12 h-50 rounded-5" alt="${eventoSeleccionado.name}">
+                                        <div class="col-12 col-md-6 d-flex justify-content-center">
+                                            <img src="${eventoSeleccionado.image}" class="height2 col-12 col-md-10 h-50 rounded-5" alt="${eventoSeleccionado.name}">
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-12 col-md-6">
                                             <div class="card-body">
                                                 <h5 class="card-title text-center fw-bold">${eventoSeleccionado.name}</h5>
                                                 <p class="card-text">Date: ${eventoSeleccionado.date}</p>
