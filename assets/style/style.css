@@ -128,6 +128,9 @@ tr th {
 tbody {
     background-color: rgb(0, 0, 0);
 }
+.width1 {
+    width: 25vw;
+}
 /* Details */
 .card-title {
     color: #ff00bf;
@@ -175,6 +178,9 @@ footer{
         max-height: 30vh;
         min-height: 30vh
     }
+    .width1 {
+        width: 80vw;
+    }
 }
 @media only screen and (min-width: 768px) and (max-width: 1024px){
     nav{
@@ -191,5 +197,8 @@ footer{
     .height2 {
         max-height: 40vh;
         min-height: 40vh
+    }
+    .width1 {
+        width: 75vw;
     }
 }
