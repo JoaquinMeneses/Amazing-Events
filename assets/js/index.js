@@ -22,7 +22,6 @@ function agregarEvento(evento) {
 // mostrar en la pantalla
 contenedorEventos.innerHTML = plantillaEvento;
 
-
 // variables filtro por categoria
 const contenedorCategorias = document.getElementById("categorias");
 const categorias = data.eventos;
@@ -60,6 +59,9 @@ function filtrarPorCategorias() {
       // filtrar los eventos filtrados por categoría por el texto buscado
         const plantillaFiltrada = eventosFiltradosPorTexto.map(agregarEvento).join(" ");
         contenedorEventos.innerHTML = plantillaFiltrada;
+        if (eventosFiltrados.length === 0) {
+            contenedorEventos.innerHTML = "<p>No hay eventos que coincidan con los filtros seleccionados.</p>";
+        }
     }
 }
 // mostrar en la pantalla
@@ -85,4 +87,7 @@ function filtrarPorTexto() {
     );
     const plantillaFiltrada = eventosFiltrados.map(agregarEvento).join(" ");
     contenedorEventos.innerHTML = plantillaFiltrada;
+    if (eventosFiltrados.length === 0) {
+        contenedorEventos.innerHTML = "<p>No hay eventos que coincidan con los filtros seleccionados.</p>";
+    }
 }
