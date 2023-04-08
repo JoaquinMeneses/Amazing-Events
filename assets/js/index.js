@@ -33,9 +33,9 @@ categorias.forEach((evento) => {
         // si la categoría no está en el Set, agregarla y añadir su plantilla
         categoriasNoRepetidas.add(evento.category);
         plantillaCategoria += `<div class="m-2">
-                            <input class="checkbox-categoria" onChange="filtrarPorCategorias()" type="checkbox" name="${evento.name}" value="${evento.category}" id="categoria-${idCategoria}" checked: "">
-                            <label for="categoria-${idCategoria}">${evento.category}</label>
-                        </div>`;
+                                    <input class="checkbox-categoria" onChange="filtrarPorCategorias()" type="checkbox" name="${evento.name}" value="${evento.category}" id="categoria-${idCategoria}" checked: "">
+                                    <label for="categoria-${idCategoria}">${evento.category}</label>
+                                </div>`;
         idCategoria++; // aumenta el valor de idCategoria
     }
 });

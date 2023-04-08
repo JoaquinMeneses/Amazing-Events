@@ -7,7 +7,11 @@
 }
 /* Body */
 body{
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #690169;
+    background: -moz-radial-gradient(center, ellipse cover, #480048 0%, #000000 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #480048 0%, #000000 100%);
+    background: radial-gradient(ellipse at center, #480048 0%, #000000 100%);
+    filter: brightness(1.1);
     user-select: none;
 }
 /* Nav */
@@ -58,7 +62,6 @@ nav{
 }
 /* Main */
 main{
-    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);                
     min-height: 75vh;
 }
 .alto65{
@@ -192,7 +195,8 @@ footer{
         text-align: center;
     }
     .columna{
-        flex-direction: column;
+        justify-content: center;
+        flex-wrap: wrap;
     }
     .height2 {
         max-height: 40vh;
