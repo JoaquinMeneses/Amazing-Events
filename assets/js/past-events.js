@@ -1,12 +1,17 @@
-const eventos = data.eventos
-
 const contenedorCartas = document.getElementById("eventos")
 
 let plantillaEventos = ""
 
+const eventos = []
+
+for( let evento of data.eventos ){
+    if(evento.date < data.fechaActual ){
+        eventos.push( evento )
+    } 
+}
+
 function agregarEvento (eventos){
-    if (eventos.date < data.fechaActual){
-        const alt = eventos.name.replace(/\s/g, `-`).toLowerCase();
+    const alt = eventos.name.replace(/\s/g, `-`).toLowerCase();
         return `<div class="card bg-black col-10 col-md-3 height1 rounded-5">
                     <img class="h-50 p-2 rounded-5" src="${eventos.image}" class="card-img-top" alt="${alt}">
                     <div class="d-flex justify-content-between flex-column card-body">
@@ -18,9 +23,6 @@ function agregarEvento (eventos){
                         </div>
                     </div>
                 </div>`;
-    } else {
-        return '';
-    }
 }
 
 for (let evento of eventos){
@@ -43,9 +45,9 @@ function imprimirCategorias(array, contenedor){
     let plantillaCategorias = ""
     for (let categoria of array){
         plantillaCategorias += `<div class="d-flex align-items-center">
-                        <input class="form-check-input m-2" type="checkbox" name="${categoria}" value="${categoria}">
-                        <label class="form-check-label m-2" for="${categoria}">${categoria}</label>
-                    </div>`
+                                    <input class="form-check-input m-2" type="checkbox" name="${categoria}" value="${categoria}">
+                                    <label class="form-check-label m-2" for="${categoria}">${categoria}</label>
+                                </div>`
     }
     contenedor.innerHTML = plantillaCategorias
     
@@ -86,7 +88,11 @@ function buscadorDeTexto(array, texto){
 
 function imprimirEventos(parametro){
     if (parametro.length === 0){
-        contenedorCartas.innerHTML = "There are no events to show";
+        contenedorCartas.innerHTML = `<div class="bg-black col-10 col-md-3 rounded-4">
+                                        <div class="d-flex justify-content-between flex-column card-body">
+                                            <h5 class="card-title text-light fw-bold text-center p-3">There are no events to show</h5>
+                                        </div>
+                                    </div>`;
     }else{
         let nota = parametro.map(agregarEvento).join(" ")
         contenedorCartas.innerHTML = nota;

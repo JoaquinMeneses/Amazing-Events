@@ -134,6 +134,12 @@ tbody {
 .width1 {
     width: 25vw;
 }
+.form-check-input:checked {
+    background-color: #ff00bf;
+}
+.form-check-input:hover {
+    background-color: #ff00bf;
+}
 /* Details */
 .card-title {
     color: #ff00bf;
