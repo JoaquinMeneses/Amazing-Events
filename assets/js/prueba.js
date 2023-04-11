@@ -100,10 +100,10 @@ function calcularPorcentajeAsistenciaFuturos(eventosFuturos) {
 const mayorAsistencia = calcularEventoMayorAsistencia(data);
 const menorAsistencia = calcularEventoMenorAsistencia(data);
 const mayorCapacidad = calcularEventoMayorCapacidad(data);
-const gananciasPasados = calcularGananciasEventosPasados(eventosPasados);
 const gananciasFuturos = calcularGananciasEventosFuturos(eventosFuturos);
-const asistenciaPasados = calcularPorcentajeAsistenciaPasados(eventosPasados);
 const asistenciaFuturos = calcularPorcentajeAsistenciaFuturos(eventosFuturos);
+const gananciasPasados = calcularGananciasEventosPasados(eventosPasados);
+const asistenciaPasados = calcularPorcentajeAsistenciaPasados(eventosPasados);
 
 console.log(mayorAsistencia);
 console.log(menorAsistencia);

@@ -10,86 +10,49 @@ for (let evento of data.eventos) {
     }
 }
 
-tabla.innerHTML = mostrarTabla(eventosPasados, eventosFuturos);
+tabla.innerHTML = mostrarTabla();
 
-function mostrarTabla(eventosPasados, eventosFuturos) {
-    let tabla = `<table>
-                <tbody>
-                    <tr class="fw-bold">
-                        <th colspan="3">Events statistics</th>
-                    </tr>
-                    <tr class="fw-bold">
-                        <td>Events with the highest percentage of attendance</td>
-                        <td>Events with the lowest percentage of attendance</td>
-                        <td>Event with larger capacity</td>
-                    </tr>
-                    <tr>
-                        <td>${calcularEventoMayorAsistencia(data)}</td>
-                        <td>${calcularEventoMenorAsistencia(data)}</td>
-                        <td>${calcularEventoMayorCapacidad(data)}</td>
-                    </tr>
-                </tbody>
-                <tbody>
-                    <tr>
-                        <th colspan="3">Upcoming events statistics by category</th>
-                    </tr>
-                    <tr>
-                        <td>Categories</td>
-                        <td>Revenues</td>
-                        <td>Percentage of attendance</td>
-                    </tr>`;
-                    
-    // Objeto para realizar seguimiento de ingresos totales por categoría
-    const ingresosPorCategoria = {};
-    const asistenciaPasados = {};
-    const asistenciaFuturos = {};
-
-    for (let evento of eventosFuturos) {
-        if (ingresosPorCategoria[evento.category]) {
-            ingresosPorCategoria[evento.category] += evento.estimate * evento.price; // Actualizar ingresos totales por categoría
-        } else {
-            ingresosPorCategoria[evento.category] = evento.estimate * evento.price;
-        }
-        asistenciaFuturos[evento.name] = (evento.estimate / evento.capacity) * 100; // Calcular porcentaje de asistencia a eventos futuros
-        tabla += `<tr>
-                    <td>${evento.category}</td>
-                    <td>${evento.estimate * evento.price}</td>
-                    <td>${asistenciaFuturos[evento.name].toFixed(2)}%</td>
-                </tr>`;
-    }
-    
-    tabla += `
-                </tbody>
-                <tbody>
-                    <tr>
-                        <th colspan="3">Past events statistics by category</th>
-                    </tr>
-                    <tr>
-                        <td>Categories</td>
-                        <td>Revenues</td>
-                        <td>Percentage of attendance</td>
-                    </tr>`;
-
-                    for (let evento of eventosPasados) {
-                        if (ingresosPorCategoria[evento.category]) {
-                            ingresosPorCategoria[evento.category] += evento.assistance * evento.price; // Actualizar ingresos totales por categoría
-                        } else {
-                            ingresosPorCategoria[evento.category] = evento.assistance * evento.price;
-                        }
-                    
-                        for (let categoria in ingresosPorCategoria) {
-                            console.log(`Categoría: ${categoria}, Ingresos: $${ingresosPorCategoria[categoria]}`);
-                        }
-                        asistenciaPasados[evento.name] = (evento.assistance / evento.capacity) * 100; // Calcular porcentaje de asistencia a eventos pasados
-                        tabla += `<tr>
-                                    <td>${evento.category}</td>
-                                    <td>${evento.assistance * evento.price}</td>
-                                    <td>${asistenciaPasados[evento.name].toFixed(2)}%</td>
-                                </tr>`;
-                    }
-    tabla += `</tbody>
-            </table>`;
-    return tabla;
+function mostrarTabla() {
+    let tabla = ""
+    return tabla = `<table>
+                    <tbody>
+                        <tr>
+                            <th colspan="3">Events statistics</th>
+                        </tr>
+                        <tr>
+                            <td>Events with the highest percentage of attendance</td>
+                            <td>Events with the lowest percentage of attendance</td>
+                            <td>Events with larger capacity</td>
+                        </tr>
+                        <tr>
+                            <td>${calcularEventoMayorAsistencia(data)}</td>
+                            <td>${calcularEventoMenorAsistencia(data)}</td>
+                            <td>${calcularEventoMayorCapacidad(data)}</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th colspan="3">Upcoming events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <td>Categories</td>
+                            <td>Revenues</td>
+                            <td>Percentage of attendance</td>
+                        </tr>
+                        ${agregarEstadisticasProximosEventosPorCategoria(data)}
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <th colspan="3">Past events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <td>Categories</td>
+                            <td>Revenues</td>
+                            <td>Percentage of attendance</td>
+                        </tr>
+                        ${agregarEstadisticasPasadosEventosPorCategoria(data)}
+                    </tbody>
+                </table>`
 }
 
 function calcularEventoMayorAsistencia(data) {
@@ -104,7 +67,6 @@ function calcularEventoMayorAsistencia(data) {
     const porcentajeAsistencia = (mayorAsistencia / eventoMayorAsistencia.capacity) * 100; // Calcular porcentaje de asistencia
     return `${eventoMayorAsistencia.name} with: ${porcentajeAsistencia.toFixed(2)}%`;
 }
-
 
 function calcularEventoMenorAsistencia(data) {
     let menorAsistencia = Infinity;
@@ -129,4 +91,92 @@ function calcularEventoMayorCapacidad(data) {
         }
     }
     return `${eventoMayorCapacidad.name} with: ${mayorCapacidad}`;
+}
+
+function agregarEstadisticasProximosEventosPorCategoria(data) {
+    let estadisticas = "";
+    const categorias = [];
+    const ingresosPorCategoria = [];
+    const porcentajeAsistenciaPorCategoria = [];
+
+    // Obtener categorías únicas
+    for (let evento of eventosFuturos) {
+        if (!categorias.includes(evento.category)) {
+            categorias.push(evento.category);
+        }
+    }
+
+    // Calcular ingresos y porcentaje de asistencia por categoría
+    for (let categoria of categorias) {
+        let ingresos = 0;
+        let asistenciaTotal = 0;
+        let capacidadTotal = 0;
+        for (let evento of eventosFuturos) {
+            if (evento.category === categoria) {
+                ingresos += evento.price * evento.estimate;
+                asistenciaTotal += evento.estimate;
+                capacidadTotal += evento.capacity;
+            }
+        }
+        const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
+        ingresosPorCategoria.push(ingresos);
+        porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
+    }
+
+    // Crear filas de la tabla con las estadísticas por categoría
+    for (let i = 0; i < categorias.length; i++) {
+        estadisticas += `
+            <tr>
+                <td>${categorias[i]}</td>
+                <td>$${ingresosPorCategoria[i]}</td>
+                <td>${porcentajeAsistenciaPorCategoria[i]}%</td>
+            </tr>
+        `;
+    }
+
+    return estadisticas;
+}
+
+function agregarEstadisticasPasadosEventosPorCategoria(data) {
+    let estadisticas = "";
+    const categorias = [];
+    const ingresosPorCategoria = [];
+    const porcentajeAsistenciaPorCategoria = [];
+
+    // Obtener categorías únicas
+    for (let evento of eventosPasados) {
+        if (!categorias.includes(evento.category)) {
+            categorias.push(evento.category);
+        }
+    }
+
+    // Calcular ingresos y porcentaje de asistencia por categoría
+    for (let categoria of categorias) {
+        let ingresos = 0;
+        let asistenciaTotal = 0;
+        let capacidadTotal = 0;
+        for (let evento of eventosPasados) {
+            if (evento.category === categoria) {
+                ingresos += evento.price * evento.assistance;
+                asistenciaTotal += evento.assistance;
+                capacidadTotal += evento.capacity;
+            }
+            }
+            const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
+            ingresosPorCategoria.push(ingresos);
+            porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
+        }
+
+    // Crear filas de la tabla con las estadísticas por categoría
+    for (let i = 0; i < categorias.length; i++) {
+        estadisticas += `
+            <tr>
+                <td>${categorias[i]}</td>
+                <td>$${ingresosPorCategoria[i]}</td>
+                <td>${porcentajeAsistenciaPorCategoria[i]}%</td>
+            </tr>
+        `;
+    }
+
+    return estadisticas;
 }
