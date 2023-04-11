@@ -1,4 +1,4 @@
-const tabla = document.getElementById("tabla");
+const contenedorTabla = document.getElementById("tabla");
 const eventosPasados = [];
 const eventosFuturos = [];
 
@@ -10,7 +10,7 @@ for (let evento of data.eventos) {
     }
 }
 
-tabla.innerHTML = mostrarTabla();
+contenedorTabla.innerHTML = mostrarTabla();
 
 function mostrarTabla() {
     let tabla = ""
@@ -133,7 +133,6 @@ function agregarEstadisticasProximosEventosPorCategoria(data) {
             </tr>
         `;
     }
-
     return estadisticas;
 }
 
@@ -177,6 +176,5 @@ function agregarEstadisticasPasadosEventosPorCategoria(data) {
             </tr>
         `;
     }
-
     return estadisticas;
 }
