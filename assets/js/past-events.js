@@ -1,31 +1,31 @@
-const contenedorCartas = document.getElementById("eventos")
+const contenedorCartas = document.getElementById("eventosPasados")
 
 let plantillaEventos = ""
 
-const eventos = []
+const eventosPasados = []
 
 for( let evento of data.eventos ){
     if(evento.date < data.fechaActual ){
-        eventos.push( evento )
+        eventosPasados.push( evento )
     } 
 }
 
-function agregarEvento (eventos){
-    const alt = eventos.name.replace(/\s/g, `-`).toLowerCase();
+function agregarEvento (eventosPasados){
+    const alt = eventosPasados.name.replace(/\s/g, `-`).toLowerCase();
         return `<div class="card bg-black col-10 col-md-3 height1 rounded-5">
-                    <img class="h-50 p-2 rounded-5" src="${eventos.image}" class="card-img-top" alt="${alt}">
+                    <img class="h-50 p-2 rounded-5" src="${eventosPasados.image}" class="card-img-top" alt="${alt}">
                     <div class="d-flex justify-content-between flex-column card-body">
-                        <h5 class="card-title fw-bold text-center">${eventos.name}</h5>
-                        <p class="card-text">${eventos.description}</p>
+                        <h5 class="card-title fw-bold text-center">${eventosPasados.name}</h5>
+                        <p class="card-text">${eventosPasados.description}</p>
                         <div class="d-flex justify-content-between align-items-baseline">
-                            <p class="card-text fw-bold m-0">$${eventos.price}</p>
-                            <a class="btn-card fw-bold" href="../pages/details.html?id=${eventos.name}">See more...</a>
+                            <p class="card-text fw-bold m-0">$${eventosPasados.price}</p>
+                            <a class="btn-card fw-bold" href="../pages/details.html?id=${eventosPasados.name}">See more...</a>
                         </div>
                     </div>
                 </div>`;
 }
 
-for (let evento of eventos){
+for (let evento of eventosPasados){
     plantillaEventos += agregarEvento(evento); 
 }
 
@@ -33,7 +33,7 @@ contenedorCartas.innerHTML = plantillaEventos
 let buscador = document.getElementById("buscador")
 let contenedorCategorias = document.getElementById("contenedorCategorias")
 
-let categorias = eventos.map (evento => evento.category)
+let categorias = eventosPasados.map (evento => evento.category)
 /* console.log(categorias) */
 let categoriasFiltrado = new Set (categorias)
 let categoriasFinal = Array.from(categoriasFiltrado)
@@ -56,7 +56,7 @@ function imprimirCategorias(array, contenedor){
 contenedorCategorias.addEventListener("change", (e) => {
     let arrayCategorias = Array.from( document.querySelectorAll('input[type="checkbox"]:checked') ).map(cat => cat.name)
     /* console.log(arrayCategorias) */
-    let filtro = filtrarPorCategoria(eventos, arrayCategorias)
+    let filtro = filtrarPorCategoria(eventosPasados, arrayCategorias)
     let resultados = buscadorDeTexto(filtro, buscador.value)
     imprimirEventos(resultados)
 })
@@ -64,7 +64,7 @@ contenedorCategorias.addEventListener("change", (e) => {
 buscador.addEventListener("input", (e) => {
     let arrayCategorias = Array.from( document.querySelectorAll('input[type="checkbox"]:checked') ).map(cat => cat.name)
     /* console.log(arrayCategorias) */
-    let filtro = filtrarPorCategoria(eventos, arrayCategorias)
+    let filtro = filtrarPorCategoria(eventosPasados, arrayCategorias)
     let resultados = buscadorDeTexto(filtro, buscador.value)
     imprimirEventos(resultados)
 })
