@@ -1,17 +1,18 @@
-export function agregarEvento (eventos){
-    const alt = eventos.name.replace(/\s/g, `-`).toLowerCase();
-        return `<div class="card bg-black col-10 col-md-3 height1 rounded-5">
-                    <img class="h-50 p-2 rounded-5" src="${eventos.image}" class="card-img-top" alt="${alt}">
-                    <div class="d-flex justify-content-between flex-column card-body">
-                        <h5 class="card-title fw-bold text-center">${eventos.name}</h5>
-                        <p class="card-text">${eventos.description}</p>
-                        <div class="d-flex justify-content-between align-items-baseline">
-                            <p class="card-text fw-bold m-0">$${eventos.price}</p>
-                            <a class="btn-card fw-bold" href="../assets/pages/details.html?id=${eventos.name}">See more...</a>
-                        </div>
+export function agregarEvento(eventos, urlDetails) {
+    const alt = eventos.name.replace(/\s/g, "-").toLowerCase();
+    return `<div class="card bg-black col-10 col-md-3 height1 rounded-5">
+                <img class="h-50 p-2 rounded-5" src="${eventos.image}" class="card-img-top" alt="${alt}">
+                <div class="d-flex justify-content-between flex-column card-body">
+                    <h5 class="card-title fw-bold text-center">${eventos.name}</h5>
+                    <p class="card-text">${eventos.description}</p>
+                    <div class="d-flex justify-content-between align-items-baseline">
+                        <p class="card-text fw-bold m-0">$${eventos.price}</p>
+                        <a class="btn-card fw-bold" href="${urlDetails}?id=${eventos.name}">See more...</a>
                     </div>
-                </div>`;
+                </div>
+            </div>`;
 }
+
 export function imprimirCategorias(array, contenedor){
     let plantillaCategorias = ""
     for (let categoria of array){
@@ -23,6 +24,7 @@ export function imprimirCategorias(array, contenedor){
     contenedor.innerHTML = plantillaCategorias
     
 }
+
 export function filtrarPorCategoria(array, categorias){
     if ( categorias.length === 0 ){
         return array
@@ -43,10 +45,10 @@ export function buscadorDeTexto(array, texto){
 export function imprimirEventos(parametro,contenedor){
     if (parametro.length === 0){
         contenedor.innerHTML = `<div class="bg-black col-10 col-md-3 rounded-4">
-                                        <div class="d-flex justify-content-between flex-column card-body">
-                                            <h5 class="card-title text-light fw-bold text-center p-3">There are no events to show</h5>
-                                        </div>
-                                    </div>`;
+                                    <div class="d-flex justify-content-between flex-column card-body">
+                                        <h5 class="card-title text-light fw-bold text-center p-3">There are no events to show</h5>
+                                    </div>
+                                </div>`;
     }else{
         let nota = parametro.map(agregarEvento).join(" ")
         contenedor.innerHTML = nota;

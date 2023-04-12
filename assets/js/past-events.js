@@ -1,47 +1,58 @@
 import {agregarEvento,imprimirCategorias,filtrarPorCategoria,buscadorDeTexto,imprimirEventos} from "./module/funciones.js"
 
-const contenedorCartas = document.getElementById("eventosPasados")
+const contenedorEventos = document.getElementById("eventosPasados")
 
 let plantillaEventos = ""
 
 const eventos = []
 
-let href = "../pages/details.html"
 
-for( let evento of data.eventos ){
-    if(evento.date < data.fechaActual ){
-        eventos.push( evento )
-    } 
-}
+fetch('https://mindhub-xj03.onrender.com/api/amazing')
+    .then(response => response.json())
+    .then(data => {
+        // Manipula los datos obtenidos de la API
+        console.log(data.events)
+        console.log(data.currentDate);
+        // Filtra los eventos pasados y agrega a eventos[]
+        for (let evento of data.events) {
+            if (evento.date < data.currentDate) {
+                eventos.push(evento);
+            }
+        }
+        
+        // Se conecta a la funcion agregarEvento para usarse como parametro y conectar el evento con Details
+        const urlDetails = "./details.html"
+        
+        // Genera la plantilla de eventos pasados
+        for (let evento of eventos) {
+            plantillaEventos += agregarEvento(evento, urlDetails);
+        }
 
-for (let evento of eventos){
-    plantillaEventos += agregarEvento(evento); 
-}
+        // Agrega la plantilla de eventos pasados al contenedor
+        contenedorEventos.innerHTML = plantillaEventos;
 
-contenedorCartas.innerHTML = plantillaEventos
-let buscador = document.getElementById("buscador")
-let contenedorCategorias = document.getElementById("contenedorCategorias")
+        // Obtiene las categorías de los eventos
+        let categorias = eventos.map(evento => evento.category);
+        let categoriasFiltrado = new Set(categorias);
+        let categoriasFinal = Array.from(categoriasFiltrado);
 
-let categorias = eventos.map (evento => evento.category)
-/* console.log(categorias) */
-let categoriasFiltrado = new Set (categorias)
-let categoriasFinal = Array.from(categoriasFiltrado)
-/* console.log(categoriasFinal) */
+        // Imprime las categorías en el contenedor de categorías
+        imprimirCategorias(categoriasFinal, contenedorCategorias);
 
-imprimirCategorias(categoriasFinal, contenedorCategorias)
+        // Agrega event listener para el cambio de categorías
+        contenedorCategorias.addEventListener("change", filtrosCruzados )
+        
+        // Agrega event listener para el input del buscador
+        buscador.addEventListener("input", filtrosCruzados )
 
-contenedorCategorias.addEventListener("change", (e) => {
-    let arrayCategorias = Array.from( document.querySelectorAll('input[type="checkbox"]:checked') ).map(cat => cat.name)
-    /* console.log(arrayCategorias) */
-    let filtro = filtrarPorCategoria(eventos, arrayCategorias)
-    let resultados = buscadorDeTexto(filtro, buscador.value)
-    imprimirEventos(resultados,contenedorCartas)
-})
-
-buscador.addEventListener("input", (e) => {
-    let arrayCategorias = Array.from( document.querySelectorAll('input[type="checkbox"]:checked') ).map(cat => cat.name)
-    /* console.log(arrayCategorias) */
-    let filtro = filtrarPorCategoria(eventos, arrayCategorias)
-    let resultados = buscadorDeTexto(filtro, buscador.value)
-    imprimirEventos(resultados,contenedorCartas)
-})
+        // Funcion para aplicar filtros cruzados
+        function filtrosCruzados() {
+            let arrayCategorias = Array.from( document.querySelectorAll('input[type="checkbox"]:checked') ).map(cat => cat.name)
+            let filtro = filtrarPorCategoria(eventos, arrayCategorias)
+            let resultados = buscadorDeTexto(filtro, buscador.value)
+            imprimirEventos(resultados,contenedorEventos)
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });

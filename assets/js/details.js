@@ -3,11 +3,19 @@ let urlParams = location.search
 let params = new URLSearchParams(urlParams)
 let id = params.get("id")
 
-const eventoSeleccionado = data.eventos.find(evento => evento.name === id)
+fetch("https://mindhub-xj03.onrender.com/api/amazing")
+    .then(response => response.json())
+    .then(data => {
+        // Manipula los datos obtenidos de la API
+        const eventoSeleccionado = data.events.find(evento => evento.name === id);
 
-const contenedorEventoSeleccionado = document.getElementById("evento-seleccionado")
+        const contenedorEventoSeleccionado = document.getElementById("evento-seleccionado");
 
-contenedorEventoSeleccionado.innerHTML = mostrarEventoSeleccionado(eventoSeleccionado)
+        contenedorEventoSeleccionado.innerHTML = mostrarEventoSeleccionado(eventoSeleccionado);
+    })
+    .catch(error => {
+        console.error(error);
+    });
 
 // Crear la plantilla HTML correspondiente con la información del evento
 function mostrarEventoSeleccionado(eventoSeleccionado) {
