@@ -6,7 +6,7 @@ export function agregarEvento(eventos, urlDetails) {
                     <h5 class="card-title fw-bold text-center">${eventos.name}</h5>
                     <p class="card-text">${eventos.description}</p>
                     <div class="d-flex justify-content-around align-items-baseline">
-                        <p class="card-text fw-bold m-0">$${eventos.price} USD</p>
+                        <p class="card-text fw-bold m-0">$${eventos.price}</p>
                         <a class="btn-card fw-bold" href="${urlDetails}?id=${eventos.name}">See more...</a>
                     </div>
                 </div>

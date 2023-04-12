@@ -26,12 +26,12 @@ nav{
     display: flex;
     flex-direction: row;
 }
-.header-item{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.logo {
+    transition: 0.5s;
+}
+.logo:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 .header-boton-active{
     font-weight: bold;
@@ -41,10 +41,12 @@ nav{
     text-decoration: none;
     background-color: #ff00bf;
     color: white;
+    transition: 0.5s;
 }
 .header-boton-active:hover{
     background-color: white;
     color: #ff00bf;
+    transition: 0.5s;
 }
 .header-boton{
     font-weight: bold;
@@ -54,10 +56,12 @@ nav{
     text-decoration: none;
     background-color: white;
     color: #ff00bf;
+    transition: 0.5s;
 }
 .header-boton:hover{
     background-color: #ff00bf;
     color: white;
+    transition: 0.5s;
 }
 /* Main */
 main{
@@ -76,7 +80,6 @@ main{
     align-items: center;
     position: relative;
 }
-
 .input-buscar {
     line-height: 28px;
     padding: 0.4rem 1rem;
@@ -85,18 +88,17 @@ main{
     outline: none;
     background-color: #f3f3f4;
     color: #0d0c22;
-    transition: .3s ease;
+    transition: 0.5s;
 }
-
 .input-buscar::placeholder {
     color: #9e9ea7;
 }
-
 .input-buscar:focus, .input-buscar:hover {
     outline: none;
     border-color: #ff00bf;
     background-color: #fff;
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    transition: 0.5s;
 }
 .btn-card {
     display: flex;
@@ -110,6 +112,7 @@ main{
     text-decoration: none;
     box-shadow: 6px 6px 6px transparent,
                 -6px -6px 6px #ff00bf;
+    transition: 0.5s;
     }
 .btn-card:hover{
     background-color: #ff00bf;
@@ -117,6 +120,7 @@ main{
     text-decoration: none;
     box-shadow: 6px 6px 6px white,
                 -6px -6px 6px transparent;
+    transition: 0.5s;
 }
 .form-contact{
     background-color: black;
@@ -135,11 +139,23 @@ textarea {
 }
 .boton-enviar{
     background-color: #ff00bf;
+    color: white;
     width: fit-content;
     border-radius: 1rem;
-    padding: 0 0.5rem;
+    padding: 0.25rem 1rem;
     margin-top: 1rem;
     border: none;
+    transition: 0.5s;
+}
+.boton-enviar:hover{
+    background-color: white;
+    color: #ff00bf;
+    width: fit-content;
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+    margin-top: 1rem;
+    border: none;
+    transition: 0.5s;
 }
 table, tr, th, td {
     color: white;
@@ -164,10 +180,10 @@ tbody {
 }
 .form-check-input:checked {
     background-color: #ff00bf;
-    border: #ff00bf 1px solid;
+    border: #ff00bf 2px solid;
 }
 .form-check-input:hover {
-    border: #ff00bf 1px solid;;
+    border: #ff00bf 2px solid;
 }
 /* Details */
 .card-title {
@@ -175,9 +191,12 @@ tbody {
 }
 .height1 {
     min-height: 60vh;
+    transition: 0.5s;
 }
 .height1:hover{
     border: 1px white solid;
+    transform: scale(1.05);
+    transition: 0.5s;
 }
 .height2 {
     max-height: 40vh;
@@ -191,6 +210,14 @@ footer{
     color: white;
     font-size: 2.5rem;
     margin: 0 1rem;
+    transition: 0.5s
+}
+.icon:hover {
+    color: #ff00bf;
+    font-size: 2.5rem;
+    margin: 0 1rem;
+    transition: 0.5s;
+    transform: rotate(1turn) scale(1.2);
 }
 @media only screen and (max-width: 767px){
     nav{
