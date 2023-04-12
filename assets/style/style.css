@@ -11,7 +11,6 @@ body{
     background: -moz-radial-gradient(center, ellipse cover, #480048 0%, #000000 100%);
     background: -webkit-radial-gradient(center, ellipse cover, #480048 0%, #000000 100%);
     background: radial-gradient(ellipse at center, #480048 0%, #000000 100%);
-    filter: brightness(1.1);
     user-select: none;
 }
 /* Nav */
@@ -62,10 +61,42 @@ nav{
 }
 /* Main */
 main{
+    background: #690169;
+    background: -moz-radial-gradient(center, ellipse cover, #480048 0%, #000000 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #480048 0%, #000000 100%);
+    background: radial-gradient(ellipse at center, #480048 0%, #000000 100%);
     min-height: 75vh;
 }
 .alto65{
     min-height: 75vh;
+}
+.btn-buscar {
+    display: flex;
+    line-height: 28px;
+    align-items: center;
+    position: relative;
+}
+
+.input-buscar {
+    line-height: 28px;
+    padding: 0.4rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    outline: none;
+    background-color: #f3f3f4;
+    color: #0d0c22;
+    transition: .3s ease;
+}
+
+.input-buscar::placeholder {
+    color: #9e9ea7;
+}
+
+.input-buscar:focus, .input-buscar:hover {
+    outline: none;
+    border-color: #ff00bf;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
 }
 .btn-card {
     display: flex;
@@ -86,9 +117,6 @@ main{
     text-decoration: none;
     box-shadow: 6px 6px 6px white,
                 -6px -6px 6px transparent;
-}
-.alto-carrusel{
-    height: 10vh;
 }
 .form-contact{
     background-color: black;
@@ -136,9 +164,10 @@ tbody {
 }
 .form-check-input:checked {
     background-color: #ff00bf;
+    border: #ff00bf 1px solid;
 }
 .form-check-input:hover {
-    background-color: #ff00bf;
+    border: #ff00bf 1px solid;;
 }
 /* Details */
 .card-title {
@@ -146,6 +175,9 @@ tbody {
 }
 .height1 {
     min-height: 60vh;
+}
+.height1:hover{
+    border: 1px white solid;
 }
 .height2 {
     max-height: 40vh;

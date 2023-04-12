@@ -2,11 +2,11 @@ export function agregarEvento(eventos, urlDetails) {
     const alt = eventos.name.replace(/\s/g, "-").toLowerCase();
     return `<div class="card bg-black col-10 col-md-3 height1 rounded-5">
                 <img class="h-50 p-2 rounded-5" src="${eventos.image}" class="card-img-top" alt="${alt}">
-                <div class="d-flex justify-content-between flex-column card-body">
+                <div class="d-flex justify-content-around flex-column card-body">
                     <h5 class="card-title fw-bold text-center">${eventos.name}</h5>
                     <p class="card-text">${eventos.description}</p>
-                    <div class="d-flex justify-content-between align-items-baseline">
-                        <p class="card-text fw-bold m-0">$${eventos.price}</p>
+                    <div class="d-flex justify-content-around align-items-baseline">
+                        <p class="card-text fw-bold m-0">$${eventos.price} USD</p>
                         <a class="btn-card fw-bold" href="${urlDetails}?id=${eventos.name}">See more...</a>
                     </div>
                 </div>
