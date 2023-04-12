@@ -64,41 +64,62 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
         }
         
         function calcularEventoMayorAsistencia(data) {
-            let mayorAsistencia = 0;
+            let mayorPorcentajeAsistencia = 0;
             let eventoMayorAsistencia = null;
             for (let evento of data.events) {
-                if (evento.assistance > mayorAsistencia) {
-                    mayorAsistencia = evento.assistance;
+                const porcentajeAsistencia = (evento.assistance / evento.capacity) * 100;
+                
+                if (porcentajeAsistencia > mayorPorcentajeAsistencia) {
+                    mayorPorcentajeAsistencia = porcentajeAsistencia;
                     eventoMayorAsistencia = evento;
                 }
             }
-            const porcentajeAsistencia = (mayorAsistencia / eventoMayorAsistencia.capacity) * 100; // Calcular porcentaje de asistencia
-            return `${eventoMayorAsistencia.name} with: ${porcentajeAsistencia.toFixed(2)}%`;
+            if (eventoMayorAsistencia) {
+                return `${eventoMayorAsistencia.name} with: ${mayorPorcentajeAsistencia.toFixed(2)}%`;
+            }
         }
         
         function calcularEventoMenorAsistencia(data) {
-            let menorAsistencia = Infinity;
+            let menorPorcentajeAsistencia = Infinity;
             let eventoMenorAsistencia = null;
             for (let evento of data.events) {
-                if (evento.assistance < menorAsistencia) {
-                    menorAsistencia = evento.assistance;
+                const porcentajeAsistencia = (evento.assistance / evento.capacity) * 100;
+                
+                if (porcentajeAsistencia < menorPorcentajeAsistencia) {
+                    menorPorcentajeAsistencia = porcentajeAsistencia;
                     eventoMenorAsistencia = evento;
                 }
             }
-            const porcentajeAsistencia = (menorAsistencia / eventoMenorAsistencia.capacity) * 100; // Calcular porcentaje de asistencia
-            return `${eventoMenorAsistencia.name} with: ${porcentajeAsistencia.toFixed(2)}%`;
+            if (eventoMenorAsistencia) {
+                return `${eventoMenorAsistencia.name} with: ${menorPorcentajeAsistencia.toFixed(2)}%`;
+            }
         }
         
         function calcularEventoMayorCapacidad(data) {
             let mayorCapacidad = 0;
+            let mayorEstimateAssistance = 0;
             let eventoMayorCapacidad = null;
             for (let evento of data.events) {
-                if (evento.capacity > mayorCapacidad) {
-                    mayorCapacidad = evento.capacity;
+                let capacidad;
+                if (evento.type === "past") {
+                    capacidad = evento.assistance;
+                } else {
+                    capacidad = evento.estimate;
+                }
+                if (capacidad > mayorCapacidad) {
+                    mayorCapacidad = capacidad;
+                    mayorEstimateAssistance = capacidad;
                     eventoMayorCapacidad = evento;
+                } else if (capacidad === mayorCapacidad) {
+                    if (capacidad === evento.estimate || capacidad === evento.assistance) {
+                        mayorEstimateAssistance = capacidad;
+                        eventoMayorCapacidad = evento;
+                    }
                 }
             }
-            return `${eventoMayorCapacidad.name} with: ${mayorCapacidad}`;
+            if (eventoMayorCapacidad) {
+                return `${eventoMayorCapacidad.name} with: ${mayorEstimateAssistance}`;
+            }
         }
         
         function agregarEstadisticasProximosEventosPorCategoria(data) {
