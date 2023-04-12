@@ -110,17 +110,14 @@ main{
     padding: 0.5rem;
     border-radius: 0.5rem;
     text-decoration: none;
-    box-shadow: 6px 6px 6px transparent,
-                -6px -6px 6px #ff00bf;
     transition: 0.5s;
     }
 .btn-card:hover{
     background-color: #ff00bf;
     color: white;
     text-decoration: none;
-    box-shadow: 6px 6px 6px white,
-                -6px -6px 6px transparent;
     transition: 0.5s;
+    transform: scale(0.9);
 }
 .form-contact{
     background-color: black;
