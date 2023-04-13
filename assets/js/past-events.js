@@ -1,4 +1,4 @@
-import {agregarEvento,imprimirCategorias,filtrarPorCategoria,buscadorDeTexto,imprimirEventos} from "./module/funciones.js"
+import {agregarEvento,imprimirCategorias,filtrarPorCategoria,buscadorDeTexto,imprimirEventos} from "./module/funciones.js";
 
 const contenedorEventos = document.getElementById("eventosPasados")
 
@@ -6,13 +6,12 @@ let plantillaEventos = ""
 
 const eventos = []
 
-
 fetch('https://mindhub-xj03.onrender.com/api/amazing')
     .then(response => response.json())
     .then(data => {
         // Manipula los datos obtenidos de la API
-        console.log(data.events)
-        console.log(data.currentDate);
+        /* console.log(data.events);
+        console.log(data.currentDate); */
         // Filtra los eventos pasados y agrega a eventos[]
         for (let evento of data.events) {
             if (evento.date < data.currentDate) {
