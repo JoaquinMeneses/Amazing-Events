@@ -13,16 +13,16 @@ export function agregarEvento(eventos, urlDetails) {
             </div>`;
 }
 
-export function imprimirCategorias(array, contenedor){
-    let plantillaCategorias = ""
-    for (let categoria of array){
+export function imprimirCategorias(array, contenedor) {
+    array.sort();
+    let plantillaCategorias = "";
+    for (let categoria of array) {
         plantillaCategorias += `<div class="d-flex align-items-center">
                                     <input class="form-check-input m-2" type="checkbox" name="${categoria}" value="${categoria}">
                                     <label class="form-check-label m-2" for="${categoria}">${categoria}</label>
-                                </div>`
+                                </div>`;
     }
-    contenedor.innerHTML = plantillaCategorias
-    
+    contenedor.innerHTML = plantillaCategorias;
 }
 
 export function filtrarPorCategoria(array, categorias){
