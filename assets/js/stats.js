@@ -137,7 +137,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                 }
                 const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
                 ingresosPorCategoria.push(ingresos);
-                porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
+                porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia);
             }
             // Crear la tabla con las estadísticas por categoría
             for (let i = 0; i < categorias.length; i++) {
@@ -145,7 +145,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     <tr>
                         <td>${categorias[i]}</td>
                         <td>$${ingresosPorCategoria[i]}</td>
-                        <td>${porcentajeAsistenciaPorCategoria[i]}%</td>
+                        <td>${porcentajeAsistenciaPorCategoria[i].toFixed(2)}%</td>
                     </tr>
                 `;
             }
@@ -177,7 +177,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     }
                     const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
                     ingresosPorCategoria.push(ingresos);
-                    porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
+                    porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia);
                 }
             // Crear la tabla con las estadísticas por categoría
             for (let i = 0; i < categorias.length; i++) {
@@ -185,7 +185,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     <tr>
                         <td>${categorias[i]}</td>
                         <td>$${ingresosPorCategoria[i]}</td>
-                        <td>${porcentajeAsistenciaPorCategoria[i]}%</td>
+                        <td>${porcentajeAsistenciaPorCategoria[i].toFixed(2)}%</td>
                     </tr>
                 `;
             }
