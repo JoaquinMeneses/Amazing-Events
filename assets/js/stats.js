@@ -139,7 +139,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                 ingresosPorCategoria.push(ingresos);
                 porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
             }
-            // Crear filas de la tabla con las estadísticas por categoría
+            // Crear la tabla con las estadísticas por categoría
             for (let i = 0; i < categorias.length; i++) {
                 estadisticas += `
                     <tr>
@@ -179,7 +179,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     ingresosPorCategoria.push(ingresos);
                     porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
                 }
-            // Crear filas de la tabla con las estadísticas por categoría
+            // Crear la tabla con las estadísticas por categoría
             for (let i = 0; i < categorias.length; i++) {
                 estadisticas += `
                     <tr>
