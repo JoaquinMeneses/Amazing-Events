@@ -131,8 +131,35 @@ main{
     margin-bottom: 0.3rem;
     width: 30vw;
 }
-textarea {
+.contact-nombre, .contact-email {
+    padding: 0.2rem;
+    color:black;
+    transition: 0.5s;
+}
+.contact-mensaje {
     resize: none;
+    padding: 0.2rem;
+    color:black;
+    max-height: 7rem;
+    min-height: 7rem;
+    transition: 0.5s;
+}
+.contact-nombre:hover,.contact-email:hover,.contact-mensaje:hover {
+    outline: none;
+    border-color: #ff00bf;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    transition: 0.5s;
+}
+.contact-nombre:focus,.contact-email:focus,.contact-mensaje:focus {
+    outline: none;
+    border-color: #ff00bf;
+    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
+    transition: 0.5s;
+}
+.contenedor-mensaje {
+    display: none;
+    height: 23.688rem;
+    width: 29.625rem;
 }
 .boton-enviar{
     background-color: #ff00bf;

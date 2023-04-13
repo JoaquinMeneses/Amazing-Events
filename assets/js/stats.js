@@ -68,15 +68,12 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             let eventoMayorAsistencia = null;
             for (let evento of data.events) {
                 const porcentajeAsistencia = (evento.assistance / evento.capacity) * 100;
-                
                 if (porcentajeAsistencia > mayorPorcentajeAsistencia) {
                     mayorPorcentajeAsistencia = porcentajeAsistencia;
                     eventoMayorAsistencia = evento;
                 }
             }
-            if (eventoMayorAsistencia) {
-                return `${eventoMayorAsistencia.name} with: ${mayorPorcentajeAsistencia.toFixed(2)}%`;
-            }
+            return `${eventoMayorAsistencia.name} with: ${mayorPorcentajeAsistencia.toFixed(2)}%`;
         }
         
         function calcularEventoMenorAsistencia(data) {
@@ -84,15 +81,12 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             let eventoMenorAsistencia = null;
             for (let evento of data.events) {
                 const porcentajeAsistencia = (evento.assistance / evento.capacity) * 100;
-                
                 if (porcentajeAsistencia < menorPorcentajeAsistencia) {
                     menorPorcentajeAsistencia = porcentajeAsistencia;
                     eventoMenorAsistencia = evento;
                 }
             }
-            if (eventoMenorAsistencia) {
-                return `${eventoMenorAsistencia.name} with: ${menorPorcentajeAsistencia.toFixed(2)}%`;
-            }
+            return `${eventoMenorAsistencia.name} with: ${menorPorcentajeAsistencia.toFixed(2)}%`;
         }
         
         function calcularEventoMayorCapacidad(data) {
@@ -117,9 +111,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     }
                 }
             }
-            if (eventoMayorCapacidad) {
-                return `${eventoMayorCapacidad.name} with: ${mayorEstimateAssistance}`;
-            }
+            return `${eventoMayorCapacidad.name} with: ${mayorEstimateAssistance}`;
         }
         
         function agregarEstadisticasProximosEventosPorCategoria(data) {
@@ -127,7 +119,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             const categorias = [];
             const ingresosPorCategoria = [];
             const porcentajeAsistenciaPorCategoria = [];
-        
+
             // Obtener categorías únicas
             for (let evento of eventosFuturos) {
                 if (!categorias.includes(evento.category)) {
