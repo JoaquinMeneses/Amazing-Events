@@ -119,14 +119,12 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             const categorias = [];
             const ingresosPorCategoria = [];
             const porcentajeAsistenciaPorCategoria = [];
-
             // Obtener categorías únicas
             for (let evento of eventosFuturos) {
                 if (!categorias.includes(evento.category)) {
                     categorias.push(evento.category);
                 }
             }
-        
             // Calcular ingresos y porcentaje de asistencia por categoría
             for (let categoria of categorias) {
                 let ingresos = 0;
@@ -143,7 +141,6 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                 ingresosPorCategoria.push(ingresos);
                 porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
             }
-        
             // Crear filas de la tabla con las estadísticas por categoría
             for (let i = 0; i < categorias.length; i++) {
                 estadisticas += `
@@ -162,14 +159,12 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             const categorias = [];
             const ingresosPorCategoria = [];
             const porcentajeAsistenciaPorCategoria = [];
-        
             // Obtener categorías únicas
             for (let evento of eventosPasados) {
                 if (!categorias.includes(evento.category)) {
                     categorias.push(evento.category);
                 }
             }
-        
             // Calcular ingresos y porcentaje de asistencia por categoría
             for (let categoria of categorias) {
                 let ingresos = 0;
@@ -186,7 +181,6 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     ingresosPorCategoria.push(ingresos);
                     porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia.toFixed(2));
                 }
-        
             // Crear filas de la tabla con las estadísticas por categoría
             for (let i = 0; i < categorias.length; i++) {
                 estadisticas += `
