@@ -1,6 +1,4 @@
 const contenedorTabla = document.getElementById("tabla");
-const eventosPasados = [];
-const eventosFuturos = [];
 
 fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL de la API real
     .then(response => response.json()) // Analizar la respuesta como JSON
@@ -122,7 +120,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             // Obtener categorías únicas
             for (let evento of eventosFuturos) {
                 if (!categorias.includes(evento.category)) {
-                    categorias.push(evento.category);
+                    categorias.sort().push(evento.category);
                 }
             }
             // Calcular ingresos y porcentaje de asistencia por categoría
@@ -162,7 +160,7 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
             // Obtener categorías únicas
             for (let evento of eventosPasados) {
                 if (!categorias.includes(evento.category)) {
-                    categorias.push(evento.category);
+                    categorias.sort().push(evento.category);
                 }
             }
             // Calcular ingresos y porcentaje de asistencia por categoría
