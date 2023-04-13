@@ -5,16 +5,10 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
     .then(data => {
         // Manipula los datos obtenidos de la API
         const contenedorTabla = document.getElementById("tabla");
-        const eventosPasados = [];
-        const eventosFuturos = [];
 
-        for (let evento of data.events) {
-            if (new Date(evento.date) < new Date(data.currentDate)) {
-                eventosPasados.push(evento);
-            } else {
-                eventosFuturos.push(evento);
-            }
-        }
+        const eventosPasados = data.events.filter(evento =>(evento.date) <(data.currentDate));
+        const eventosFuturos = data.events.filter(evento =>(evento.date) >(data.currentDate));
+
 
         contenedorTabla.innerHTML = mostrarTabla();
 
@@ -89,40 +83,26 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
         
         function calcularEventoMayorCapacidad(data) {
             let mayorCapacidad = 0;
-            let mayorEstimateAssistance = 0;
             let eventoMayorCapacidad = null;
             for (let evento of data.events) {
-                let capacidad;
-                if (evento.type === "past") {
-                    capacidad = evento.assistance;
-                } else {
-                    capacidad = evento.estimate;
-                }
-                if (capacidad > mayorCapacidad) {
-                    mayorCapacidad = capacidad;
-                    mayorEstimateAssistance = capacidad;
+                if (evento.capacity > mayorCapacidad) {
+                    mayorCapacidad = evento.capacity;
                     eventoMayorCapacidad = evento;
-                } else if (capacidad === mayorCapacidad) {
-                    if (capacidad === evento.estimate || capacidad === evento.assistance) {
-                        mayorEstimateAssistance = capacidad;
-                        eventoMayorCapacidad = evento;
-                    }
                 }
             }
-            return `${eventoMayorCapacidad.name} with: ${mayorEstimateAssistance}`;
+            return `${eventoMayorCapacidad.name} with: ${mayorCapacidad}`;
         }
         
         function agregarEstadisticasProximosEventosPorCategoria(data) {
             let estadisticas = "";
-            const categorias = [];
-            const ingresosPorCategoria = [];
-            const porcentajeAsistenciaPorCategoria = [];
+            const categorias = new Set();
+            const estadisticasPorCategoria = {};
+            
             // Obtener categorías únicas
             for (let evento of eventosFuturos) {
-                if (!categorias.includes(evento.category)) {
-                    categorias.sort().push(evento.category);
-                }
+                categorias.add(evento.category);
             }
+            
             // Calcular ingresos y porcentaje de asistencia por categoría
             for (let categoria of categorias) {
                 let ingresos = 0;
@@ -136,33 +116,36 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                     }
                 }
                 const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
-                ingresosPorCategoria.push(ingresos);
-                porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia);
+                estadisticasPorCategoria[categoria] = {
+                    ingresos: ingresos,
+                    porcentajeAsistencia: porcentajeAsistencia.toFixed(2)
+                };
             }
+            
             // Crear la tabla con las estadísticas por categoría
-            for (let i = 0; i < categorias.length; i++) {
+            for (let categoria of categorias) {
                 estadisticas += `
                     <tr>
-                        <td>${categorias[i]}</td>
-                        <td>$${ingresosPorCategoria[i]}</td>
-                        <td>${porcentajeAsistenciaPorCategoria[i].toFixed(2)}%</td>
+                        <td>${categoria}</td>
+                        <td>$${estadisticasPorCategoria[categoria].ingresos}</td>
+                        <td>${estadisticasPorCategoria[categoria].porcentajeAsistencia}%</td>
                     </tr>
                 `;
             }
+            
             return estadisticas;
         }
         
         function agregarEstadisticasPasadosEventosPorCategoria(data) {
             let estadisticas = "";
-            const categorias = [];
-            const ingresosPorCategoria = [];
-            const porcentajeAsistenciaPorCategoria = [];
+            const categorias = new Set();
+            const estadisticasPorCategoria = {};
+            
             // Obtener categorías únicas
             for (let evento of eventosPasados) {
-                if (!categorias.includes(evento.category)) {
-                    categorias.sort().push(evento.category);
-                }
+                categorias.add(evento.category);
             }
+            
             // Calcular ingresos y porcentaje de asistencia por categoría
             for (let categoria of categorias) {
                 let ingresos = 0;
@@ -174,21 +157,25 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                         asistenciaTotal += evento.assistance;
                         capacidadTotal += evento.capacity;
                     }
-                    }
-                    const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
-                    ingresosPorCategoria.push(ingresos);
-                    porcentajeAsistenciaPorCategoria.push(porcentajeAsistencia);
                 }
+                const porcentajeAsistencia = (asistenciaTotal / capacidadTotal) * 100;
+                estadisticasPorCategoria[categoria] = {
+                    ingresos: ingresos,
+                    porcentajeAsistencia: porcentajeAsistencia.toFixed(2)
+                };
+            }
+            
             // Crear la tabla con las estadísticas por categoría
-            for (let i = 0; i < categorias.length; i++) {
+            for (let categoria of categorias) {
                 estadisticas += `
                     <tr>
-                        <td>${categorias[i]}</td>
-                        <td>$${ingresosPorCategoria[i]}</td>
-                        <td>${porcentajeAsistenciaPorCategoria[i].toFixed(2)}%</td>
+                        <td>${categoria}</td>
+                        <td>$${estadisticasPorCategoria[categoria].ingresos}</td>
+                        <td>${estadisticasPorCategoria[categoria].porcentajeAsistencia}%</td>
                     </tr>
                 `;
             }
+            
             return estadisticas;
         }
     })

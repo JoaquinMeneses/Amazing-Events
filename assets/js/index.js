@@ -12,10 +12,10 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing')
         // Manipula los datos obtenidos de la API
         /* console.log(data.events);
         console.log(data.currentDate); */
-        // Filtra los eventos pasados y agrega a eventos[]
-        for (let evento of data.events) {
-            eventos.push(evento);
-        }
+
+        // Filtra todos los eventos
+        eventos.push(...data.events);
+        /* console.log(eventos) */
 
         // Se conecta a la funcion agregarEvento para usarse como parametro y conectar el evento con Details
         const urlDetails = "./assets/pages/details.html"
