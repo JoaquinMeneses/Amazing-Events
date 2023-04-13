@@ -13,10 +13,10 @@ export function agregarEvento(eventos, urlDetails) {
             </div>`;
 }
 
-export function imprimirCategorias(array, contenedor) {
-    array.sort();
+export function imprimirCategorias(eventos, contenedor) {
+    eventos.sort();
     let plantillaCategorias = "";
-    for (let categoria of array) {
+    for (let categoria of eventos) {
         plantillaCategorias += `<div class="d-flex align-items-center">
                                     <input class="form-check-input m-2" type="checkbox" name="${categoria}" value="${categoria}">
                                     <label class="form-check-label m-2" for="${categoria}">${categoria}</label>
@@ -25,32 +25,32 @@ export function imprimirCategorias(array, contenedor) {
     contenedor.innerHTML = plantillaCategorias;
 }
 
-export function filtrarPorCategoria(array, categorias){
+export function filtrarPorCategoria(eventos, categorias){
     if ( categorias.length === 0 ){
-        return array
+        return eventos
     }else{
-        return array.filter( array => categorias.includes(array.category) );
+        return eventos.filter( eventos => categorias.includes(eventos.category) );
     }
 }
 
-export function buscadorDeTexto(array, texto){
+export function buscadorDeTexto(eventos, texto){
     if (!texto){
-        return array;
+        return eventos;
     }else{
         let textoMin = texto.toLowerCase();
-        return array.filter( nota => nota.name.toLowerCase().includes(textoMin) || nota.description.toLowerCase().includes(textoMin) )
+        return eventos.filter( evento => evento.name.toLowerCase().includes(textoMin) || evento.description.toLowerCase().includes(textoMin) )
     }
 }
 
-export function imprimirEventos(parametro,contenedor){
-    if (parametro.length === 0){
+export function imprimirEventos(eventos,contenedor){
+    if (eventos.length === 0){
         contenedor.innerHTML = `<div class="bg-black col-10 col-md-3 rounded-4">
                                     <div class="d-flex justify-content-between flex-column card-body">
                                         <h5 class="card-title text-light fw-bold text-center p-3">There are no events to show</h5>
                                     </div>
                                 </div>`;
     }else{
-        let nota = parametro.map(agregarEvento).join(" ")
-        contenedor.innerHTML = nota;
+        let evento = eventos.map(agregarEvento).join(" ")
+        contenedor.innerHTML = evento;
     }
 }
