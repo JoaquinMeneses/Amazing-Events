@@ -20,9 +20,9 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                                         <th colspan="3">Events statistics</th>
                                     </tr>
                                     <tr>
-                                        <td>Events with the highest percentage of attendance</td>
-                                        <td>Events with the lowest percentage of attendance</td>
-                                        <td>Events with larger capacity</td>
+                                        <td class="fw-bold">Events with the highest percentage of attendance</td>
+                                        <td class="fw-bold">Events with the lowest percentage of attendance</td>
+                                        <td class="fw-bold">Events with larger capacity</td>
                                     </tr>
                                     <tr>
                                         <td>${calcularEventoMayorAsistencia(data)}</td>
@@ -35,9 +35,9 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                                         <th colspan="3">Upcoming events statistics by category</th>
                                     </tr>
                                     <tr>
-                                        <td>Categories</td>
-                                        <td>Revenues</td>
-                                        <td>Percentage of attendance</td>
+                                        <td class="fw-bold">Categories</td>
+                                        <td class="fw-bold">Revenues</td>
+                                        <td class="fw-bold">Percentage of attendance</td>
                                     </tr>
                                     ${agregarEstadisticasProximosEventosPorCategoria(data)}
                                 </tbody>
@@ -46,9 +46,9 @@ fetch('https://mindhub-xj03.onrender.com/api/amazing') // Reemplazar con la URL 
                                         <th colspan="3">Past events statistics by category</th>
                                     </tr>
                                     <tr>
-                                        <td>Categories</td>
-                                        <td>Revenues</td>
-                                        <td>Percentage of attendance</td>
+                                        <td class="fw-bold">Categories</td>
+                                        <td class="fw-bold">Revenues</td>
+                                        <td class="fw-bold">Percentage of attendance</td>
                                     </tr>
                                     ${agregarEstadisticasPasadosEventosPorCategoria(data)}
                                 </tbody>
